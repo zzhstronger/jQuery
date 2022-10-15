@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./jQuery3.6.0(开发版).js"></script>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            // 1.读取第一个div的title属性
+            console.log($("div:first").attr("title"));
+            // 2.给所有的div设置name属性(value为zzh)
+            $("div").attr("name", "zzh");
+            // 3.移除所有的div的title属性
+            $("div").removeAttr("title");
+            // 4.给所有的div设置class="zengzhihui"
+            $("div").attr("class", "zengzhihui");
+            // 5.给所有的div添加class="abc"
+            $("div").addClass("abc");
+            // 6.移除所有div的zengzhihui的class
+            $("div").removeClass("zengzhihui");
+            // 7.得到最后一个li的标签体文本
+            console.log($("li:last")[0].innerText);
+            console.log($("li:last").html());
+            // 8.设置第一个li的标签体为"<h1>mmmmmmm</h1>"
+            $("li:first").html("<h1>mmmmmmm</h1>")
+            // 9.得到输入框的value值
+            console.log($(":text").val());//读value属性
+            // 10.将输入框的值设置为zzh
+            $(":text").val("曾志辉");//写value属性  读写合一
+            // 11.点击全选按钮实现全选
+            var $checkboxs = $(":checkbox");
+            $("button:first").click(function () {
+                $($checkboxs).attr("checked", true);
+            });
+            // 12.点击全不选按钮实现全不选
+            $("button:last").click(function () {
+                $($checkboxs).attr("checked", false);
+            });
+        };
+
+    </script>
+</head>
+
+<body>
+    <!--
+需求:
+    1.读取第一个div的title属性
+    2.给所有的div设置name属性(value为zzh)
+    3.移除所有的div的title属性
+    4.给所有的div设置class="zengzhihui"
+    5.给所有的div添加class="abc"
+    6.移除所有div的zengzhihui的class
+    7.得到最后一个li的标签体文本
+    8.设置第一个li的标签体为"<h1>mmmmmmm</h1>"
+    9.得到输入框的value值
+    10.将输入框的值设置为zzh
+    11.点击全选按钮实现全选
+    12.点击全不选按钮实现全不选
+-->
+    <div class="box" id="div1" title="one">class为box的div1</div>
+    <div class="box" id="div2" title="two">class为box的div2</div>
+    <div id="div3">div3</div>
+    <span class="box">class为box的span</span>
+    <br>
+    <ul>
+        <li>AAAAA</li>
+        <li class="box2" title="hello">BBBBB</li>
+        <li class="box">CCCCC</li>
+        <li title="hello">DDDDD</li>
+        <li title="two"><span>BBBBB</span></li>
+    </ul>
+
+    <input name="username" type="text" value="guiguClass">
+    <br>
+    <input type="checkbox">
+    <input type="checkbox">
+
+    <button>选中</button>
+    <button>不选中</button>
+</body>
+
+</html>

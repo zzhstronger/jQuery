@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>01.初识jQuery</title>
+	</head>
+	<script type="text/javascript">
+		window.onload = function() {
+			//使用原生DOM
+			var btn01 = document.getElementById("btn01");
+			btn01.onclick = function() {
+				var username = document.getElementById("username").value;
+				alert(username);
+			};
+		};
+	</script>
+
+	<!-- 使用jQuery实现 -->
+	<script type="text/javascript" src="./jQuery3.6.0(开发版).js"></script>
+	<script type="text/javascript">
+		// 绑定文档加载完成的监听
+		//使用jQuery核心函数($/jQuery)
+		// $(function() { //该行代码可以写成jQuery(function) {
+		// 	$("#btn02").click(function() { //给btn02绑定点击监听
+		// 		var usernmae = $("#username").val();
+		// 		alert(usernmae);
+		// 	});
+		// });
+
+		//使用jQuery核心对象: 执行$()返回的对象
+		jQuery(function() {
+			var $btn02 = $("#btn02");
+			$btn02.click(function() {
+				var username = $("#username").val();
+				alert(username);
+			});
+		});
+	</script>
+	<body>
+		<!--
+			需求：点击“确定”按钮，提示输入的值 
+		-->
+		用户名:<input type="text" name="" id="username" value="" />
+		<button type="button" id="btn01">确定(原生版)</button>
+		<button type="button" id="btn02">确定(jQuery版)</button>
+
+		<!-- 
+			jQuery使用方法:
+						1.服务器本地库
+						2CDN远程库: 项目上线时，一般使用比较靠谱的CSD资源库
+						减轻服务器负担
+						平台: BootCDN
+		-->
+	</body>
+</html>

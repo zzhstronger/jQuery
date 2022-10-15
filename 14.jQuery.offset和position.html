@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./jQuery3.6.0(开发版).js"></script>
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            // 1.点击btn1
+            $("#btn1").click(function () {
+                // 打印div1相对页面左上角的位置
+                console.log($(".div1").offset());
+                console.log($(".div1").offset().top + "px", $(".div1").offset().left + "px");
+                // 打印div2相对页面左上角的位置
+                console.log($(".div2").offset());
+                console.log($(".div2").offset().top + "px", $(".div2").position().left + "px");
+                // 打印div1相对父元素左上角的位置
+                console.log($(".div1").position());
+                console.log($(".div1").position().top + "px", $(".div1").offset().left + "px");
+                // 打印div2相对父元素左上角的位置
+                console.log($(".div2").position());
+                console.log($(".div2").position().top + "px", $(".div2").position().left + "px");
+            });
+            // 2.点击btn2
+
+            $("#btn2").click(function () {
+                // 设置div2相对于页面的左上角的位置
+                $(".div2").offset({
+                    "top": "60",//不能带单位
+                    "left": "60"//不能带单位
+                });
+            });
+
+        };
+    </script>
+    <style>
+        * {
+            margin: 0px;
+        }
+
+        .div1 {
+            position: absolute;
+            height: 200px;
+            width: 200px;
+            top: 20px;
+            left: 10px;
+            background-color: blue;
+        }
+
+        .div2 {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            top: 20px;
+            background-color: red;
+        }
+
+        .div3 {
+            position: absolute;
+            top: 250px;
+        }
+    </style>
+</head>
+
+<body style="height: 2000px">
+    <div class="div1">
+        <div class="div2">测试offset</div>
+    </div>
+
+    <div class="div3">
+        <button id="btn1">读取offset和position</button>
+        <button id="btn2">设置offset</button>
+    </div>
+    <!-- 
+        需求:
+        1.点击btn1
+        打印div1相对页面左上角的位置
+        打印div2相对页面左上角的位置
+        打印div1相对父元素左上角的位置
+        打印div2相对父元素左上角的位置
+        2.点击btn2
+        设置div2相对于页面的左上角的位置
+    -->
+
+    <!-- 
+        获取/设置标签的位置数据
+            offset():相对页面左上角的坐标,返回的是一个对象
+            position():相对父元素左上角的坐标，返回的是一个对象
+    -->
+</body>
+
+</html>

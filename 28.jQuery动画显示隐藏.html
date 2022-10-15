@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jQuery3.6.0(开发版).js"></script>
+    <script>
+        $(document).ready(function () {
+            function animationEnd() {
+                console.log("动画结束啦!!!");
+            };
+            var $div1 = $(".div1");
+            // 1.点击btn1,隐藏
+            $("#btn1").click(function () {
+                $div1.hide(3000, animationEnd);
+                //$div1.hide();//不带参数的hide会立即隐藏
+            });
+            // 2.点击btn2,显示
+            $("#btn2").click(function () {
+                $div1.show(3000, animationEnd);
+                //$div1.show();//不带参数的会立即显示
+            });
+            // 3.点击btn3,隐藏/显示切换
+            $("#btn3").click(function () {
+                $div1.toggle(3000, animationEnd);
+                //$div1.toggle();//不带参数的会立即显示与隐藏
+            });
+        });
+    </script>
+    <style>
+        .div1 {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            top: 50px;
+            left: 10px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn1">隐藏</button>
+    <button id="btn2">显示</button>
+    <button id="btn3">隐藏/显示切换</button>
+    <div class="div1"></div>
+    <!-- 
+        显示隐藏动画 带参数时有动画(opacity,width,height),不带参数时无动画立即显示隐藏
+        1.show(): 无动画的显示
+        2.hide(): 无动画的隐藏
+        3.toggle(): 无动画的切换显示与隐藏
+    -->
+
+    <!-- 
+        需求:
+            1.点击btn1,隐藏
+            2.点击btn2,显示
+            3.点击btn3,隐藏/显示切换
+    -->
+
+</body>
+
+</html>

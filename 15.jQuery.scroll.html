@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jQuery3.6.0(开发版).js"></script>
+    <script>
+        window.onload = function () {
+            $("#btn01").click(function () {
+                // 1.得到div或页面滚动条的坐标
+                console.log($("div").scrollTop());//效率低因为要先找到后封装为jQuery对象
+                console.log($(document.documentElement).scrollTop() + $(document.body).scrollTop());//效率高
+            });
+
+            // 2.让div或页面的滚动条滚动到指定的位置
+            $("#btn02").click(function () {
+                $("div").scrollTop(60);
+                $(document.documentElement).scrollTop(1000) + $(document.body).scrollTop(1000);
+            });
+        };
+    </script>
+</head>
+
+<body style="height: 2000px;">
+    <div style="overflow-y: scroll; width: 200px; height: 250px;">
+        This is some text. This is some text. This is some text. This is some text.
+        This is some text. This is some text. This is some text. This is some text.
+        This is some text. This is some text. This is some text. This is some text.
+        This is some text. This is some text. This is some text. This is some text.
+        This is some text. This is some text. This is some text. This is some text.
+        This is some text. This is some text. This is some text. This is some text.
+    </div>
+    <br>
+    <button id="btn01" style="position: fixed;">得到scrollTop</button>
+    <button id="btn02" style="position: fixed; left: 115px;">设置scrollTop</button>
+    <!-- 
+        需求:
+        1.得到div或页面滚动条的坐标
+        2.让div或页面的滚动条滚动到指定的位置
+    -->
+    <!-- 
+        1.scrollTop():
+            读取/设置滚动条的Y坐标(兼容ie)
+        2.$(document.body).scrollTop()+$(document.ddocumentElement).scrollTop()
+            读取页面滚动条的Y坐标
+        3.$("body,html").scrollTop(60);
+            滚动到指定的位置
+    -->
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery-1.11.1.js"></script>
+    <script src="./jquery.validate.js"></script>
+    <script>
+        $(document).ready(function () { 
+            //声明式验证:程序员只需要声明各种验证规则,最终有jQuery插件来帮忙验证,可自定义错误验证信息
+            // 对此表单开启验证
+            $("#myForm").validate({
+                messages: {
+                    username: {
+                        required: "请输入用户名!!!",
+                        minlength: "用户名至少6位!!!",
+                    },
+                    pwd1: {
+                        required: "请输入密码!!!",
+                        minlength: "密码最少6位!!!",
+                        maxlength: "密码最多8位!!!",
+                    },
+                    pwd2: {
+                        equalTo: "必须与密码相同!!!",
+                    },
+                },
+            });
+        });
+    </script>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- messages: {
+		required: "This field is required.",
+		remote: "Please fix this field.",
+		email: "Please enter a valid email address.",
+		url: "Please enter a valid URL.",
+		date: "Please enter a valid date.",
+		dateISO: "Please enter a valid date ( ISO ).",
+		number: "Please enter a valid number.",
+		digits: "Please enter only digits.",
+		creditcard: "Please enter a valid credit card number.",
+		equalTo: "Please enter the same value again.",
+		maxlength: $.validator.format( "Please enter no more than {0} characters." ),
+		minlength: $.validator.format( "Please enter at least {0} characters." ),
+		rangelength: $.validator.format( "Please enter a value between {0} and {1} characters long." ),
+		range: $.validator.format( "Please enter a value between {0} and {1}." ),
+		max: $.validator.format( "Please enter a value less than or equal to {0}." ),
+		min: $.validator.format( "Please enter a value greater than or equal to {0}." )
+	}, -->
+    <form action="xxx" id="myForm">
+        <p>用户名(必须,最小6位):<input name="username" type="text" required minlength="6"></p>
+        <p>密码(必须,6到8位):<input id="password" name="pwd1" type="password" required minlength="6" maxlength="8"></p>
+        <p>确认密码(与密码相同):<input name="pwd2" type="password" equalTo="#password"></p>
+        <p><input type="submit" value="注册"></p>
+
+    </form>
+</body>
+
+</html>

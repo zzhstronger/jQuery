@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./jQuery3.6.0(开发版).js"></script>
+    <script>
+        window.onload = function () {
+            var $div = $("div");
+            console.log($div.height(), $div.width());
+            console.log($div.innerHeight(), $div.innerWidth());
+            console.log($div.outerHeight(true), $div.outerWidth(true));
+        }
+    </script>
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 150px;
+            background-color: red;
+            padding: 10px;
+            border: 10px #fb850f solid;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>div</div>
+    <!-- 
+        1.内容尺寸
+        height(): height
+        width():  width
+        2.内部尺寸
+        innerHeight(): height+padding
+        innerWidth(): width+padding
+        3.外部尺寸
+        outerHeight(false/true): height+padding+border 如果是true，加上margin
+        outerWeight(false/true): height+padding+border 如果是true，加上margin
+    -->
+</body>
+
+</html>

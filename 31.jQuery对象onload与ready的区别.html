@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jQuery3.6.0(开发版).js"></script>
+</head>
+
+<body>
+    <h1>测试window.onload与$(document).ready()</h1>
+    <img src="https://tse1-mm.cn.bing.net/th/id/R-C.5917bb40e6379a5649c8aad0da6a11bb?rik=yfpuP67iUrPLrw&riu=http%3a%2f%2fh2.bytravel.cn%2fwww%2f51%2fhead%2f50871.gif&ehk=8W2fMdLH5JHm%2bog24mIBwxuU3PXcn0ZsFKVkiSm1kkY%3d&risl=&pid=ImgRaw&r=0"
+        alt="" id="logo">
+    <!-- 
+        区别:window.onload与$(document).ready()
+            window.onload
+                包括页面的图片全部加载完成后才会回调(晚)
+                只有一个监听回调,只能调用一次
+            $(document).ready()
+                等同于: $(function(){});
+                页面加载完成就回调(早)
+                可以有多个监听回调,可以调用多次
+-->
+
+    <!-- 
+    需求:
+        1.直接打印img的宽度,观察其值
+        2.在$(function(){})中打印img的宽度
+        3.在window。onload中打印宽度
+        4.在img加载完成后打印宽度
+-->
+    <script>
+        // 1.直接打印img的宽度,观察其值
+        console.log("直接打印", $("img").width());
+        window.onload = function () {
+            console.log("window.onload打印", $("img").width() + "px");
+        };
+
+        $(document).ready(function () {
+            console.log("ready()打印", $("img").width() + "px");
+        });
+
+        $("img").on("load", function () {
+            console.log("图片加载完成啦!!!");
+        })
+    </script>
+</body>
+
+</html>

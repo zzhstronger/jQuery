@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./jQuery3.6.0(开发版).js"></script>
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            //  1.得到第一个p标签的颜色
+            console.log($("p").css("color"));
+            // 2.设置所有p标签的颜色为hotpink
+            $("p").css("color", "hotpink");
+            // 3.设置第2个p的字体颜色(#ff0011),背景(blue),宽(300px),高(30px)
+            $("p:eq(1)").css({
+                "color": "#ff0011",
+                "background": "blue",
+                "width": "300px",
+                "height": "30px"
+            });
+        };
+    </script>
+</head>
+
+<body>
+    <p style="color:red">曾志辉</p>
+    <p style="color:blue">曾志辉</p>
+    <!-- 
+        设置css样式/读取css值
+        css()
+    -->
+    <!-- 
+        1.得到第一个p标签的颜色
+        2.设置所有p标签的颜色为hotpink
+        3.设置第2个p的字体颜色(#ff0011),背景(blue),宽(300px),高(30px)
+    -->
+</body>
+
+</html>

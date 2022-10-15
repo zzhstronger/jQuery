@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="./jQuery3.6.0.min(发行版).js">
+		</script>
+		<script type="text/javascript">
+		//需求1. 点击按钮: 显示按钮的文本，显示一个新的输入框
+			$(function(){//绑定文档加载完成的监听,参数为函数: 当DOM加载完成后, 执行此回调函数
+				$("#btn").click(function(){//绑定点击事件监听，参数为选择器字符串: 查找所有匹配的标签,并将它们封装成jQuery对象
+					//this是什么? 发生事件的dom元素(<button>)
+					//console.log(this.innerHTML);
+					console.log($(this).html());//jQuery读写合一,参数为DOM对象: 将dom对象封装成jQuery对象(因为执行jQuery返回的就是jQuery对象)
+					$("<input type='text' name='mag3' /><br>").appendTo("div");
+				});
+			});
+			
+		//需求2. 遍历输出数组中所有元素值
+		var arr=[2,4,7];
+		//$.each() : 隐式遍历数组
+		$.each(arr,function(index,item){
+			console.log(index,item);
+		});
+		
+		//需求3: 去掉"my atuigu" 两端的空格
+		//原生代码
+		var str="my atuigu";
+		console.log("---"+str.trim()+"---");
+		
+		//jQuery代码
+		console.log("---"+$.trim(str)+"---")
+		</script>
+	</head>
+	<body>
+		<div id="">
+			<button type="button" id="btn">测试</button><br>
+			<input type="text" name="msg1" id="" value="" /><br>
+			<input type="text" name="mag2" id="" value="" /><br>
+		</div>
+		<!-- 
+			1.作为一般函数调用: $(param)
+				参数为函数: 当DOM加载完成后, 执行此回调函数
+				参数为选择器字符串: 查找所有匹配的标签,并将它们封装成jQuery对象
+				参数为DOM对象: 将dom对象封装成jQuery对象
+				参数为html标签字符串(用的比较少):创建标签对象并封装成jQuery对象
+			2.作为对象使用: $.xxx()
+				$.each() : 隐式遍历数组
+				$.trim() : 去除两端的空格
+				
+			需求1. 点击按钮: 显示按钮的文本，显示一个新的输入框
+			需求2. 遍历输出数组中所有元素值
+			需求3: 去掉"my atuigu" 两端的空格
+			
+		-->
+	</body>
+</html>

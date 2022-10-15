@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./jQuery3.6.0(开发版).js"></script>
+    <script>
+        window.onload = function () {
+            // 1.$.each(): 遍历数组或对象中的数据
+            var obj = {
+                name: "Tom",
+                setName: function (name) {
+                    this.name = name;
+                }
+            };
+            $.each(obj, function (key, value) {
+                console.log(key, value);
+            });
+
+            // 2.$.trim(): 去除字符串两边的空格
+            //原生代码
+            var str = "my atuigu";
+            console.log("---" + str.trim() + "---");
+
+            //jQuery代码
+            console.log("---" + $.trim(str) + "---")
+
+            // 3.$.type(obj):得到数组的类型
+            console.log($.type($));
+
+            // 4.$.isArray(obj):判断是否是数组
+            console.log($.isArray($("body")), $.isArray([0, 1, 2, 3, 4, 5, 6]))//false jQuery函数执行结果返回的是一个伪数组
+
+            // 5.$.isFunction(obj):判断是否是函数
+            console.log($.isFunction($))//true
+
+            // 6.$.parseJSON(json):解析json字符串转换为js对象/数组 将json对象===>转换为js对象/数组
+            var json = '{"name":"zzh"}'
+            console.log($.parseJSON(json));
+            var obj = $.parseJSON(json);
+            console.log(obj.name)
+            json = '[{"name":"zzh"},{"name":"zzh"}]';
+            console.log($.parseJSON(json));
+            console.log($.parseJSON(json)[0], $.parseJSON(json)[1]);
+        };
+    </script>
+</head>
+<body>
+<!--
+    1.$.each(): 遍历数组或对象中的数据
+    2.$.trim(): 去除字符串两边的空格
+    3.$.type(obj):得到数组的类型
+    4.$.isArray(obj):判断是否是数组
+    5.$.isFunction(obj):判断是否是函数
+    6.$.parseJSON(json):解析json字符串转换为js对象/数组
+-->
+</body>
+</html>

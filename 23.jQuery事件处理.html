@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .outer {
+            background-color: blue;
+            height: 200px;
+            width: 200px;
+            position: relative;
+        }
+
+        .inner {
+            background-color: red;
+            height: 50px;
+            width: 50px;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: auto;
+            position: absolute;
+            margin: auto;
+        }
+    </style>
+    <script src="./jQuery3.6.0(开发版).js"></script>
+    <script>
+        $(document).ready(function () {
+            // 1.给.outer绑定点击监听(用两种方法绑定)推荐使用方法一
+            //方法一
+            $(".outer").click(function () {
+                console.log("click out");
+            });
+
+            //方法二
+            $(".outer").on("click", function () {
+                console.log("on click out");
+            });
+            // 2.给.inner绑定鼠标移入和移出的时间监听(用三种方法绑定)
+            //方法一
+            $(".inner")
+                .mouseenter(function () {
+                    console.log("鼠标进入");
+                })
+                .mouseleave(function () {
+                    console.log("鼠标移出");
+                });
+
+            //方法二
+            $(".inner")
+                .on("mouseenter", function () {
+                    console.log("鼠标移入");
+                })
+                .on("mouseleave", function () {
+                    console.log("鼠标移出");
+                });
+
+            //方法三
+            $(".inner")
+                .hover(function () {
+                    console.log("鼠标移进去啦")
+                }, function () {
+                    console.log("鼠标移出来啦")
+                });
+            // 3.点击btn1解除.inner上的所有事件监听
+            $("#btn1").click(function () {
+                $(".inner").off();
+            });
+            // 4.点击btn2解除.inner上的mouseenter事件
+            $("#btn2").click(function () {
+                $(".inner").off("mouseenter");//解除指定的事件监听
+            });
+            // 5.点击btn3得到事件坐标
+            $("#btn3").click(function (event) {
+                console.log(event.clientX, event.clientY);//原点在窗口的左上角
+                console.log(event.pageX, event.pageY);//原点在页面的左上角
+                console.log(event.offsetX, event.offsetY);//原点在事件元素的左上角
+            });
+            //事件的坐标
+            //event.clientX,event.clientY 相对于视口的左上角
+            //event.pageX,event.pageY 相对于页面的左上角
+            //event.offsetX,event.offsetY 相对于事件元素的左上角
+
+            // 6.点击.inner区域,外部点击监听不响应
+            $(".inner").click(function () {
+                event.stopPropagation();
+            });
+            //事件相关处理
+            //停止事件冒泡:event.stopPropagation();
+            //阻止是事件默认行为:event.preventDefault();
+            // 7.点击链接，如果当前时间是偶数不跳转
+            $("#test4").click(function (event) {
+                if (Date.now() % 2 === 0) {
+                    event.preventDefault();
+                }
+            });
+        });
+    </script>
+</head>
+
+<body style="height: 2000px;">
+    <div class="outer">
+        外部div
+        <div class="inner">内部div</div>
+    </div>
+    <br>
+    <div class="divBtn">
+        <button id="btn1">取消绑定所有事件</button>
+        <button id="btn2">取消绑定mouseenter事件</button>
+        <button id="btn3">测量事件坐标</button>
+        <a href="https://www.baidu.com" id="test4">百度一下</a>
+    </div>
+    <!--
+        需求:
+        1.给.outer绑定点击监听(用两种方法绑定)
+        2.给.inner绑定鼠标移入和移出的时间监听(用三种方法绑定)
+        3.点击btn1解除.inner上的所有事件监听
+        4.点击btn2解除.inner上的所有事件监听
+        5.点击btn3得到事件坐标
+        6.点击.inner区域,外部点击监听不响应
+        7.点击链接，如果当前时间是偶数不跳转
+    -->
+
+    <!-- 
+        区别mouseover与mouseenter?
+        mouseover:在移入子元素的时候也会触发,对应mouseout
+        mouseenter:只有在移入当前元素时才会触发,对应mouseleave
+        hover的使用就是mouseenter和mouseleave,在其中传递两个对应回调函数
+
+        区别.on("click",fn)与.click(fn);
+        .on("click",fn) 通用，但编码复杂
+        .click(fn) 有时不通用,但编码简单
+    -->
+</body>
+
+</html>

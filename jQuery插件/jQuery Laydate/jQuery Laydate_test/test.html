@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery.js"></script>
+    <script src="./laydate/laydate.js"></script>
+    <script>
+        $(document).ready(function () {
+            lay('#version').html('-v' + laydate.v);
+
+            //执行一个laydate实例
+            laydate.render({
+                elem: '#test1' //指定元素
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <input type="text" class="demo-input" placeholder="请选择日期" id="test1">
+    <!-- <input class="laydate-icon" placeholder="请选择日期" onclick="laydate()"> -->
+</body>
+
+</html>

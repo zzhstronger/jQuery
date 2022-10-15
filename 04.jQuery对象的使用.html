@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./jQuery3.6.0(开发版).js"></script>
+    <script>
+        window.onload = function () {
+            //需求1.统计有多少个按钮
+            var $buttons = $("button");
+            console.log($buttons instanceof Array)//false
+            //1.size()/length: 包含的DOM元素个数
+            console.log($buttons.length);
+
+            //需求2.取出第二个button的文本
+            //2.[index]/get(index): 得到对应位置的DOM元素
+            console.log($buttons[1].innerHTML, $buttons.get(1).innerHTML);
+
+            //需求3.输出所有button的文本
+            //3.each(): 遍历包含的所有DOM元素
+            $buttons.each(function (index, domEle) {
+                console.log(index, domEle.innerHTML);
+                console.log(this);//this指向dom元素
+                console.log(this.innerHTML);
+            });
+
+            //需求4.输出‘测试三’按钮是所有按钮中的第几个
+            //4.index(): 得到在所在兄弟元素的下标
+            console.log("<------------->");
+            console.log($("#btn03").index());
+
+            console.log("~~~~~~~~~~~~~~~");
+            //自定义一个伪数组
+            var weiArr = {};
+            weiArr.length = 2;
+            weiArr[0] = "zzh";
+            weiArr[1] = "zmq";
+            for (var i = 0; i < weiArr.length; i++) {
+                var obj = weiArr[i];
+                console.log(i, obj);
+                console.log(weiArr.forEach, weiArr.push)//undefined, undefined
+
+            }
+
+        };
+
+    </script>
+</head>
+<body>
+<!--
+        jQuery核心对象
+            理解:即执行jQuery核心函数返回的对象
+                jQuery对象内部包含的是dom元素对象的伪数组(可能只有一个元素)
+                伪数组是object对象
+                    object对象
+                    Length属性
+                    数值下标
+                    证明伪数组
+                    console.log($buttons instanceof Array)//false
+                    伪数组没有数组的特定的方法例如 forEach(), push(), pop(), splice()....
+                jQuery对象拥有很多有用的属性和方法,让程序员能方便的操作dom
+
+                基本行为
+                    1.size()/length: 包含的DOM元素个数
+                    2.[index]/get(index): 得到对应位置的DOM元素
+                    3.each(): 遍历包含的所有DOM元素
+                    4.index(): 得到在所在兄弟元素的下标
+
+        需求:
+            需求1.统计有多少个按钮
+            需求2.取出第二个button的文本
+            需求3.输出所有button的文本
+            需求4.输出‘测试三’按钮是所有按钮中的第几个
+-->
+<button>测试一</button>
+<button>测试二</button>
+<button id="btn03">测试三</button>
+<button>测试四</button>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!--author:zzh-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./jQuery3.6.0(开发版).js"></script>
+    <script>
+        window.onload = function () {
+            // 1.选择不可用的文本输入框
+            console.log($("input:disabled").css({"background": "red"}));
+            // 2.显示选择爱好的个数
+            console.log($(":checkbox:checked").length);
+            // 3.显示选择的城市名称
+            $(":submit").click(function () {
+                var city = $("select option:selected").html();//选择的是option的标签体文本
+                alert(city);
+                var val=$("select").val();//选择的是option的value属性值
+                alert(val);
+            });
+        };
+    </script>
+</head>
+<body>
+<form action="">
+    用户名:<input type="text" value=""><br>
+    密码:<input type="password" value=""><br>
+    爱好:
+    <input checked="checked" name="" type="checkbox">篮球
+    <input checked="checked" name="" type="checkbox">足球
+    <input checked="checked" name="" type="checkbox">羽毛球<br>
+    性别:
+    <input name="sex" type="radio" value="male">男
+    <input name="sex" type="radio" value="female">女<br>
+    邮箱:<input disabled="disabled" name="email" type="text" value=""><br>
+    所在地:
+    <select id="" name="">
+        <option value="1">北京</option>
+        <option value="2">天津</option>
+        <option value="3">河北</option>
+    </select><br>
+    <input type="submit" value="提交">
+</form>
+<!--
+需求:
+    1.选择不可用的文本输入框
+    2.显示选择爱好的个数
+    3.显示选择的城市名称
+-->
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./jQuery3.6.0(开发版).js"></script>
+    <script>
+        window.onload = function () {
+            // 1.选中ul下所有的span元素
+            // 1.ancestor descendant
+            // 在给定的祖先元素下匹配所有的后代元素
+            console.log($("ul span").each(function (index, domEle) {
+                console.log(index, domEle.innerHTML);
+            }));
+            console.log("<----->");
+            // 2.选中ul下的所有的子元素span
+            //2.parent>child
+            // 在给定的父元素匹配所有的子元素
+            console.log($("ul>span").each(function (index, domEle) {
+                console.log(index, domEle.innerHTML);
+            }));
+            console.log("<----->");
+            // 3.选中class为box的下一个li
+            //3.prev+next
+            // 匹配所有紧接在pre元素后的next元素
+            console.log($(".box+li").each(function (index, domEle) {
+                console.log(index, domEle.innerText);
+            }));
+            console.log("<----->");
+            // 4.选中ul下的class为box的元素后面的所有兄弟元素
+            // 4.prev~siblings
+            // 匹配prev元素之后的所有siblings元素
+            console.log($("ul>.box~*").each(function (index, domEle) {
+                console.log(index, domEle.innerText);
+            }));
+        };
+    </script>
+</head>
+<body>
+<ul>
+    <li>AAAAA</li>
+    <li class="box">BBBBB</li>
+    <li title="hello"><span>CCCCC</span></li>
+    <li title="hello"><span>DDDDD</span></li>
+    <span>EEEEE</span>
+</ul>
+<!--
+    层次选择器: 查找子元素，后代元素，兄弟元素的选择器
+    1.ancestor descendant
+    在给定的祖先元素下匹配所有的后代元素
+    2.parent>child
+    在给定的父元素匹配所有的子元素
+    3.prev+next
+    匹配所有紧接在pre元素后的next元素
+    4.prev~siblings
+    匹配prev元素之后的所有siblings元素
+
+    需求:
+        1.选中ul下所有的span元素
+        2.选中ul下的所有的子元素span
+        3.选中class为box的下一个li
+        4.选中ul下的class为box的元素后面的所有兄弟元素
+-->
+</body>
+</html>

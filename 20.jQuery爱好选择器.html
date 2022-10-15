@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>全选练习</title>
+    <script src="./jQuery3.6.0(开发版).js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //1.点击“全选”:选中所有的爱好
+            var $checkedAllBox = $("#checkedAllBox");
+            $items = $(":checkbox[name=items]");
+            $("#checkedAllBtn").click(function () {
+                $items.prop({ "checked": true });
+                $checkedAllBox.prop({ "checked": true });
+            });
+            //2.点击“全不选”:全不选中所有爱好
+            var $checkedAllBox = $("#checkedAllBox");
+            $items = $(":checkbox[name=items]");
+            $("#checkedNoBtn").click(function () {
+                $items.prop({ "checked": false });
+                $checkedAllBox.prop({ "checked": false });
+            });
+
+            //3.点击反选改变所有爱好选中状态
+            $("#checkedRevBtn").click(function () {
+                $items.each(function () {
+                    //遍历所有的items
+                    this.checked = !this.checked
+                });
+                //关键代码!!!
+                $checkedAllBox.prop({ "checked": $items.filter(":not(:checked)").length === 0 });
+            });
+
+            //4.点击提交:提示所有勾选的按钮
+            $("#sendBtn").click(function () {
+                $items.filter(":checked").each(function () {
+                    alert(this.value);
+                });
+            });
+
+            //点击全选/全不选:选中所有爱好，或者全不选中
+            $checkedAllBox.click(function () {
+                $items.prop("checked", this.checked);//此处this指向#checkedAllBox dom元素
+            });
+
+            //6.点击某个爱好时,必须要更新全选/全不选的选中状态
+            $items.click(function () {
+                //关键代码
+                $checkedAllBox.prop({ "checked": $items.filter(":not(:checked)").length === 0 });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <form action="" method="post">
+        你爱好的运动是？
+        <input type="checkbox" id="checkedAllBox" />全选/全不选
+        <br>
+        <input type="checkbox" name="items" value="足球" />足球<br>
+        <input type="checkbox" name="items" value="篮球" />篮球<br>
+        <input type="checkbox" name="items" value="羽毛球" />羽毛球<br>
+        <input type="checkbox" name="items" value="乒乓球" />乒乓球<br>
+        <br>
+        <input type="button" id="checkedAllBtn" value="全选" />
+        <input type="button" id="checkedNoBtn" value="全不选" />
+        <input type="button" id="checkedRevBtn" value="反选" />
+        <input type="button" id="sendBtn" value="提交" />
+    </form>
+</body>
+
+</html>
